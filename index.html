@@ -61,6 +61,12 @@
         left: -100px;
         height: 350px;
       }
+      .hand-with-pill2 {
+        position: absolute;
+        top: 0px;
+        left: -100px;
+        height: 350px;
+      }
       .start-title-btn {
         position: absolute;
         font-size: 24px;
@@ -90,6 +96,47 @@
           max-width: 25%;
         }
       }
+
+      /* styling for third page animation  */
+      /* Basic styling for images */
+      .hand-with-pill,
+      .hand-with-glass {
+        position: absolute;
+        width: 150px; /* Adjust the width based on your requirement */
+        height: auto;
+      }
+
+      /* Animation for the hand-with-pill to move from left to center */
+      .hand-with-pill {
+        left: -200px; /* Start from off-screen left */
+        animation: moveFromLeft 2s forwards; /* 2s animation, adjust time if needed */
+      }
+
+      /* Animation for the hand-with-glass to move from right to center */
+      .hand-with-glass {
+        right: -200px; /* Start from off-screen right */
+        animation: moveFromRight 2s forwards; /* 2s animation, adjust time if needed */
+      }
+
+      /* Keyframes for moving hand-with-pill from left to center */
+      @keyframes moveFromLeft {
+        0% {
+          left: -200px; /* Start outside the screen on the left */
+        }
+        100% {
+          left: calc(50% - 200px); /* Move to the center */
+        }
+      }
+
+      /* Keyframes for moving hand-with-glass from right to center */
+      @keyframes moveFromRight {
+        0% {
+          right: -200px; /* Start outside the screen on the right */
+        }
+        100% {
+          right: calc(50% - 200px); /* Move to the center */
+        }
+      }
     </style>
   </head>
   <body>
@@ -110,7 +157,7 @@
           <img
             src="./images/handwithpills.svg"
             alt="hand-with-pill"
-            class="hand-with-pill"
+            class="hand-with-pill2"
           />
           <div class="start-title-btn">
             <h3 class="">
