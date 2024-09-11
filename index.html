@@ -10,6 +10,13 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <style>
+      .hidden {
+        display: none;
+      }
+
+      .visible {
+        display: block;
+      }
       body {
         padding: 0px;
         margin: 0px;
@@ -47,9 +54,14 @@
         text-align: center;
         position: relative;
         height: 100vh;
-        overflow: hidden;
       }
       .hand-with-pill {
+        position: absolute;
+        top: 0px;
+        left: -100px;
+        height: 350px;
+      }
+      .hand-with-pill2 {
         position: absolute;
         top: 0px;
         left: -100px;
@@ -100,40 +112,86 @@
           max-width: 25%;
         }
       }
+
+      /* styling for third page animation  */
+      /* Basic styling for images */
+      .hand-with-pill,
+      .hand-with-glass {
+        position: absolute;
+        width: 150px; /* Adjust the width based on your requirement */
+        height: auto;
+      }
+
+      /* Animation for the hand-with-pill to move from left to center */
+      .hand-with-pill {
+        left: -200px; /* Start from off-screen left */
+        animation: moveFromLeft 2s forwards; /* 2s animation, adjust time if needed */
+      }
+
+      /* Animation for the hand-with-glass to move from right to center */
+      .hand-with-glass {
+        right: -200px; /* Start from off-screen right */
+        animation: moveFromRight 2s forwards; /* 2s animation, adjust time if needed */
+      }
+
+      /* Keyframes for moving hand-with-pill from left to center */
+      @keyframes moveFromLeft {
+        0% {
+          left: -200px; /* Start outside the screen on the left */
+        }
+        100% {
+          left: calc(50% - 200px); /* Move to the center */
+        }
+      }
+
+      /* Keyframes for moving hand-with-glass from right to center */
+      @keyframes moveFromRight {
+        0% {
+          right: -200px; /* Start outside the screen on the right */
+        }
+        100% {
+          right: calc(50% - 200px); /* Move to the center */
+        }
+      }
     </style>
   </head>
   <body>
     <div class="">
-      <!-- ------ DIV NUMBER ----- 1 -->
+      <!-- div number 1 -->
 
-      <!-- <div class="main-parent-div">
+      <div class="main-parent-div" id="firstPage">
         <div class="div-no-1">
           <h1 class="start-text">Ready to see Bplex Forte in action?</h1>
           <div id="lottie-container" class="girl-saying-yes"></div>
         </div>
-      </div> -->
+      </div>
 
-      <!-- ------ DIV NUMBER ----- 2 -->
+      <!-- div number 2 -->
 
-      <!-- <div class="">
+      <div class="hidden" id="secondPage">
         <div class="game-start-div">
           <img
             src="./images/handwithpills.svg"
             alt="hand-with-pill"
-            class="hand-with-pill"
+            class="hand-with-pill2"
           />
           <div class="start-title-btn">
             <h3 class="">
               Explore how it combats chronic fatigue and revitalizes your body
             </h3>
-            <button class="start-btn">Start</button>
+            <button
+              class="start-btn"
+              onclick="showDiv('secondPage','thirdPage')"
+            >
+              Start
+            </button>
           </div>
         </div>
-      </div> -->
+      </div>
 
-      <!-- ------ DIV NUMBER ----- 3 -->
+      <!-- div number 3 -->
 
-      <!-- <div class="">
+      <div class="hidden" id="thirdPage">
         <div class="game-start-div">
           <img
             src="./images/handwithpills.svg"
@@ -146,7 +204,7 @@
             class="hand-with-glass"
           />
         </div>
-      </div> -->
+      </div>
 
       <!-- ------ DIV NUMBER ----- 4 -->
 
@@ -169,6 +227,16 @@
         autoplay: true,
         path: "./images/girl-image.json",
       });
+      function showDiv(first, second) {
+        document.getElementById(first).classList.add("hidden");
+
+        document.getElementById(second).classList.remove("hidden");
+      }
+      window.onload = function () {
+        setTimeout(function () {
+          showDiv("firstPage", "secondPage");
+        }, 4000);
+      };
     </script>
   </body>
 </html>
