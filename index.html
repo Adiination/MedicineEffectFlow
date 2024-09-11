@@ -10,10 +10,17 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <style>
+      .inside-human-div {
+        height: 100vh;
+        background-color: rgba(219, 234, 254, 1);
+      }
+      .pill {
+        width: 100%;
+        height: 100%;
+      }
       .hidden {
         display: none;
       }
-
       .visible {
         display: block;
       }
@@ -84,10 +91,19 @@
       }
       .hand-with-glass {
         position: absolute;
-        right: -70px;
+        right: -100px;
         bottom: 30px;
         height: 350px;
       }
+      .inside-human-div {
+        height: 100vh;
+        background-color: rgba(219, 234, 254, 1);
+      }
+      .pill {
+        width: 100%;
+        height: 100%;
+      }
+
       .div-size {
         border: 3px solid red;
       }
@@ -102,8 +118,7 @@
       .hand-with-pill,
       .hand-with-glass {
         position: absolute;
-        width: 150px; /* Adjust the width based on your requirement */
-        height: auto;
+        height: 350px;
       }
 
       /* Animation for the hand-with-pill to move from left to center */
@@ -141,7 +156,7 @@
   </head>
   <body>
     <div class="">
-      <!-- div number 1 -->
+      <!-- ------ DIV NUMBER ----- 1 -->
 
       <div class="main-parent-div" id="firstPage">
         <div class="div-no-1">
@@ -150,10 +165,10 @@
         </div>
       </div>
 
-      <!-- div number 2 -->
+      <!-- ------ DIV NUMBER ----- 2 -->
 
       <div class="hidden" id="secondPage">
-        <div class="div-size game-start-div">
+        <div class="game-start-div">
           <img
             src="./images/handwithpills.svg"
             alt="hand-with-pill"
@@ -173,10 +188,10 @@
         </div>
       </div>
 
-      <!-- div number 3 -->
+      <!-- ------ DIV NUMBER ----- 3 -->
 
       <div class="hidden" id="thirdPage">
-        <div class="div-size game-start-div">
+        <div class="game-start-div" onclick="showDiv(`thirdPage`,`fourthPage`)">
           <img
             src="./images/handwithpills.svg"
             alt="hand-with-pill"
@@ -187,6 +202,13 @@
             alt="hand-with-glass"
             class="hand-with-glass"
           />
+        </div>
+      </div>
+      <!-- ------ DIV NUMBER ----- 4 -->
+
+      <div class="hidden" id="fourthPage">
+        <div class="inside-human-div">
+          <img src="./images/BodyForPill.gif" alt="pill" class="pill" />
         </div>
       </div>
     </div>
