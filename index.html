@@ -10,6 +10,13 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <style>
+      .hidden {
+        display: none;
+      }
+
+      .visible {
+        display: block;
+      }
       body {
         padding: 0px;
         margin: 0px;
@@ -69,7 +76,7 @@
         color: rgba(44, 106, 155, 1);
         font-weight: bold;
       }
-      .hand-with-glass{
+      .hand-with-glass {
         position: absolute;
         right: -70px;
         bottom: 30px;
@@ -89,16 +96,16 @@
     <div class="">
       <!-- div number 1 -->
 
-      <!-- <div class="main-parent-div">
+      <div class="main-parent-div" id="firstPage">
         <div class="div-no-1">
           <h1 class="start-text">Ready to see Bplex Forte in action?</h1>
           <div id="lottie-container" class="girl-saying-yes"></div>
         </div>
-      </div> -->
+      </div>
 
       <!-- div number 2 -->
 
-      <!-- <div class="">
+      <div class="hidden" id="secondPage">
         <div class="div-size game-start-div">
           <img
             src="./images/handwithpills.svg"
@@ -109,21 +116,30 @@
             <h3 class="">
               Explore how it combats chronic fatigue and revitalizes your body
             </h3>
-            <button class="start-btn">Start</button>
+            <button
+              class="start-btn"
+              onclick="showDiv('secondPage','thirdPage')"
+            >
+              Start
+            </button>
           </div>
         </div>
-      </div> -->
+      </div>
 
       <!-- div number 3 -->
 
-      <div class=""></div>
+      <div class="hidden" id="thirdPage">
         <div class="div-size game-start-div">
           <img
             src="./images/handwithpills.svg"
             alt="hand-with-pill"
             class="hand-with-pill"
           />
-          <img src="./images/handwithglass.svg" alt="hand-with-glass" class="hand-with-glass"/>
+          <img
+            src="./images/handwithglass.svg"
+            alt="hand-with-glass"
+            class="hand-with-glass"
+          />
         </div>
       </div>
     </div>
@@ -136,6 +152,16 @@
         autoplay: true,
         path: "/images/girl-image.json",
       });
+      function showDiv(first, second) {
+        document.getElementById(first).classList.add("hidden");
+
+        document.getElementById(second).classList.remove("hidden");
+      }
+      window.onload = function () {
+        setTimeout(function () {
+          showDiv("firstPage", "secondPage");
+        }, 4000);
+      };
     </script>
   </body>
 </html>
