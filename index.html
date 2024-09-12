@@ -13,7 +13,6 @@
       .hidden {
         display: none;
       }
-
       .visible {
         display: block;
       }
@@ -48,18 +47,22 @@
         bottom: -40px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80%;
+        width: 50%;
       }
       .game-start-div {
         text-align: center;
         position: relative;
         height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
       }
       .hand-with-pill {
         position: absolute;
         top: 0px;
         left: -100px;
-        height: 350px;
+        /* height: 250px; */
+        height: 50%;
       }
       .hand-with-pill2 {
         position: absolute;
@@ -70,7 +73,7 @@
       .start-title-btn {
         position: absolute;
         font-size: 24px;
-        padding: 10px;
+        padding: 20px;
         bottom: 10%;
       }
       .start-btn {
@@ -81,94 +84,235 @@
         padding: 10px 40px;
         color: rgba(44, 106, 155, 1);
         font-weight: bold;
+        font-size: 18px;
       }
       .hand-with-glass {
         position: absolute;
         right: -100px;
-        bottom: 30px;
-        height: 350px;
+        bottom: -24px;
+        /* height: 300px; */
+        height: 50%;
       }
       .inside-human-div {
-        background-image: url("./images/insidehumanbody.svg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
         height: 100vh;
-        position: relative;
         background-color: rgba(219, 234, 254, 1);
+        overflow: hidden;
       }
       .pill {
-        height: 40px;
+        width: 100%;
+        height: 100%;
+      }
+
+      .inside-pill {
+        position: relative;
+      }
+      .pill-arrow {
         position: absolute;
-        top: 35%;
-        left: 50%;
+        bottom: 14px;
+        right: 30%;
+        height: 13%;
+        transform: rotate(10deg);
+      }
+      .game-play-div {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      .game-play-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hand-pointer {
+        position: absolute;
+        left: 44%;
+        top: 42%;
+      }
+      .timer-div {
+        background-image: url("./images/timerBg.jpg");
+        background-size: cover; /* Ensures the image covers the div completely */
+        background-repeat: repeat; /* Repeats the image */
+        background-position: top; /* Ensures the image starts from the center */
+        height: 100vh; /* Full viewport height */
+        width: 100vw; /* Full viewport width */
+      }
+      .timer {
+        font-family: "Arial", sans-serif;
+        font-size: 48px;
+        font-weight: bold;
+        text-align: center;
       }
 
       .div-size {
         border: 3px solid red;
       }
-      @media screen and (min-width: 600px) {
+
+      @media (min-width: 320px) {
+      }
+
+      /* Medium devices (tablets, 768px and up) */
+      @media (min-width: 768px) {
         .girl-saying-yes {
-          max-width: 25%;
+          max-width: 40%;
+          bottom: -55px;
+        }
+        .hand-with-pill2 {
+          height: 400px;
+          left: -90px;
+        }
+        .start-btn {
+          background-color: white;
+          outline: none;
+          border: 0px;
+          border-radius: 8px;
+          padding: 10px 40px;
+          color: rgba(44, 106, 155, 1);
+          font-size: 24px;
+        }
+        .hand-with-glass {
+          position: absolute;
+          right: -100px;
+          bottom: -24px;
+          /* height: 300px; */
+          height: 70%;
+        }
+        .hand-with-pill {
+          position: absolute;
+          top: 0px;
+          left: -100px;
+          /* height: 250px; */
+          height: 70%;
+        }
+        .inside-human-div {
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+        }
+        .pill {
+          width: 60%;
+          height: 100%;
+          border: 2px solid black;
+        }
+        .pill-arrow {
+          right: 40%;
+        }
+        .game-play-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+        .hand-pointer {
+          position: absolute;
+          left: 47%;
+          top: 44%;
+        }
+
+        @keyframes moveFromLeft {
+          0% {
+            left: -200px;
+          }
+          100% {
+            left: calc(0px);
+          }
         }
       }
 
-      /* styling for third page animation  */
-      /* Basic styling for images */
-      .hand-with-pill,
-      .hand-with-glass {
-        position: absolute;
-        width: 150px; /* Adjust the width based on your requirement */
-        height: auto;
+      /* Large devices (desktops, 1024px and up) */
+      @media (min-width: 1024px) {
+        .girl-saying-yes {
+          max-width: 35%;
+          bottom: -70px;
+        }
+        .hand-with-pill2 {
+          height: 550px;
+          left: -140px;
+          top: 40px;
+        }
+        .start-btn {
+          background-color: white;
+          outline: none;
+          border: 0px;
+          border-radius: 8px;
+          padding: 10px 40px;
+          color: rgba(44, 106, 155, 1);
+          font-weight: bold;
+        }
+        .pill {
+          width: 35%;
+          height: 100%;
+          border: 2px solid black;
+        }
+        .pill-arrow {
+          right: 44%;
+        }
+        .hand-pointer {
+          position: absolute;
+          left: 48%;
+          top: 44%;
+        }
       }
 
-      /* Animation for the hand-with-pill to move from left to center */
+      /* Extra large devices (large desktops, 1200px and up) */
+      @media (min-width: 1200px) {
+        .girl-saying-yes {
+          max-width: 30%;
+          bottom: -100px;
+        }
+        .hand-with-pill2 {
+          left: -40px;
+        }
+      }
       .hand-with-pill {
-        left: -200px; /* Start from off-screen left */
-        animation: moveFromLeft 2s forwards; /* 2s animation, adjust time if needed */
+        left: -200px;
+        animation: moveFromLeft 2s forwards;
       }
-
-      /* Animation for the hand-with-glass to move from right to center */
       .hand-with-glass {
-        right: -200px; /* Start from off-screen right */
-        animation: moveFromRight 2s forwards; /* 2s animation, adjust time if needed */
+        right: -200px;
+        animation: moveFromRight 2s forwards;
       }
 
-      /* Keyframes for moving hand-with-pill from left to center */
       @keyframes moveFromLeft {
         0% {
-          left: -200px; /* Start outside the screen on the left */
+          left: -200px;
         }
+        /* 100% {
+          left: calc(50% - 200px);
+        } */
         100% {
-          left: calc(50% - 200px); /* Move to the center */
+          left: calc(0px);
         }
       }
 
-      /* Keyframes for moving hand-with-glass from right to center */
       @keyframes moveFromRight {
         0% {
-          right: -200px; /* Start outside the screen on the right */
+          right: -200px;
         }
+        /* 100% {
+          right: calc(50% - 200px);
+        } */
         100% {
-          right: calc(50% - 200px); /* Move to the center */
+          right: calc(0px);
         }
       }
     </style>
   </head>
   <body>
     <div class="">
-      <!-- div number 1 -->
+      <!-- ------ DIV NUMBER ----- 1 -->
 
-      <div class="main-parent-div" id="firstPage">
+      <!-- <div class="main-parent-div" id="firstPage">
         <div class="div-no-1">
           <h1 class="start-text">Ready to see Bplex Forte in action?</h1>
           <div id="lottie-container" class="girl-saying-yes"></div>
         </div>
-      </div>
+      </div> -->
 
-      <!-- div number 2 -->
+      <!-- ------ DIV NUMBER ----- 2 -->
 
-      <div class="hidden" id="secondPage">
+      <!-- <div class="hidden" id="secondPage">
         <div class="game-start-div">
           <img
             src="./images/handwithpills.svg"
@@ -187,12 +331,12 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <!-- div number 3 -->
+      <!-- ------ DIV NUMBER ----- 3 -->
 
-      <div class="hidden" id="thirdPage">
-        <div class="game-start-div">
+      <!-- <div class="hidden" id="thirdPage">
+        <div class="game-start-div" onclick="showDiv(`thirdPage`,`fourthPage`)">
           <img
             src="./images/handwithpills.svg"
             alt="hand-with-pill"
@@ -204,22 +348,63 @@
             class="hand-with-glass"
           />
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 4 -->
 
-      <div>
-        <div class="inside-human-div">
-          <img src="./images/pill.png" alt="pill" class="pill" />
+      <!-- <div class="hidden" id="fourthPage">
+        <div
+          class="inside-human-div"
+          onclick="showDiv(`fourthPage`,`fifthPage`)"
+        >
+          <img src="./images/BodyForPill.gif" alt="pill" class="pill" />
+        </div>
+      </div> -->
+
+      <!-- ------ DIV NUMBER ----- 5 -->
+
+      <!-- <div class="hidden" id="fifthPage">
+        <div id="image-container" class="inside-human-div inside-pill">
+          <div>
+            <img
+              src="./images/pillArrow.gif"
+              alt="pill-arrow"
+              class="pill-arrow"
+            />
+          </div>
+        </div>
+      </div> -->
+
+      <!-- ------ DIV NUMBER ----- 6 -->
+
+      <!-- <div class="hidden" id="sixthPage">
+        <div class="game-play-div">
+          <img
+            src="./images/gamePlay.svg"
+            alt="game-play-img"
+            class="game-play-img"
+          />
+          <div id="hand-pointer" class="hand-pointer"></div>
+        </div>
+      </div> -->
+
+      <!-- ------ DIV NUMBER ----- 7 -->
+
+      <div class="inside-human-div">
+        <div class="timer-div pill">
+          <div class="timer" id="timer">00:00</div>
         </div>
       </div>
-
-      <!-- <div>
-        <div class="inside-human-div"></div>
-      </div> -->
     </div>
 
     <script>
+      const imagePaths = [
+        "./images/vitaminPill1.jpg",
+        "./images/vitaminPill2.jpg",
+        "./images/vitaminPill3.jpg",
+      ];
+
+      // Load Lottie animation
       lottie.loadAnimation({
         container: document.getElementById("lottie-container"),
         renderer: "svg",
@@ -227,16 +412,57 @@
         autoplay: true,
         path: "./images/girl-image.json",
       });
+      lottie.loadAnimation({
+        container: document.getElementById("hand-pointer"),
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "./images/handPointer.json",
+      });
+
+      // Function to show and hide divs
       function showDiv(first, second) {
         document.getElementById(first).classList.add("hidden");
-
         document.getElementById(second).classList.remove("hidden");
       }
+
+      // Initial transition on window load
       window.onload = function () {
         setTimeout(function () {
           showDiv("firstPage", "secondPage");
         }, 4000);
       };
+
+      // Image carousel
+      const imageContainer = document.getElementById("image-container");
+      const imgElement = document.createElement("img");
+      let currentIndex = 0;
+      imgElement.src = imagePaths[currentIndex];
+      imgElement.className = "pill";
+      imageContainer.appendChild(imgElement);
+
+      // Dynamically check if 'fifthPage' is active
+      function isFifthPageActive() {
+        const FifthPage = document.getElementById("fifthPage");
+        return FifthPage && !FifthPage.classList.contains("hidden");
+      }
+
+      // Function to update the image
+      function updateImage() {
+        currentIndex = (currentIndex + 1) % imagePaths.length;
+        imgElement.src = imagePaths[currentIndex];
+        if (currentIndex == imagePaths.length - 1) {
+          console.log("Image updated");
+          if (isFifthPageActive()) {
+            setTimeout(() => {
+              showDiv("fifthPage", "sixthPage");
+            }, 1000);
+          }
+        }
+      }
+
+      // Call updateImage every 1.5 seconds
+      setInterval(updateImage, 1500);
     </script>
   </body>
 </html>
