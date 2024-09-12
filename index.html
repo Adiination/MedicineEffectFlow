@@ -119,11 +119,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
       }
       .game-play-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+      .hand-pointer {
+        position: absolute;
+        left: 44%;
+        top: 42%;
       }
 
       .div-size {
@@ -184,6 +190,11 @@
           height: 100%;
           object-fit: contain;
         }
+        .hand-pointer {
+          position: absolute;
+          left: 47%;
+          top: 44%;
+        }
 
         @keyframes moveFromLeft {
           0% {
@@ -222,6 +233,11 @@
         }
         .pill-arrow {
           right: 44%;
+        }
+        .hand-pointer {
+          position: absolute;
+          left: 48%;
+          top: 44%;
         }
       }
 
@@ -273,16 +289,16 @@
     <div class="">
       <!-- ------ DIV NUMBER ----- 1 -->
 
-      <div class="main-parent-div" id="firstPage">
+      <!-- <div class="main-parent-div" id="firstPage">
         <div class="div-no-1">
           <h1 class="start-text">Ready to see Bplex Forte in action?</h1>
           <div id="lottie-container" class="girl-saying-yes"></div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 2 -->
 
-      <div class="hidden" id="secondPage">
+      <!-- <div class="hidden" id="secondPage">
         <div class="game-start-div">
           <img
             src="./images/handwithpills.svg"
@@ -301,11 +317,11 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 3 -->
 
-      <div class="hidden" id="thirdPage">
+      <!-- <div class="hidden" id="thirdPage">
         <div class="game-start-div" onclick="showDiv(`thirdPage`,`fourthPage`)">
           <img
             src="./images/handwithpills.svg"
@@ -318,27 +334,23 @@
             class="hand-with-glass"
           />
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 4 -->
 
-      <div class="hidden" id="fourthPage">
+      <!-- <div class="hidden" id="fourthPage">
         <div
           class="inside-human-div"
           onclick="showDiv(`fourthPage`,`fifthPage`)"
         >
           <img src="./images/BodyForPill.gif" alt="pill" class="pill" />
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 5 -->
 
-      <div class="hidden" id="fifthPage">
-        <div
-          id="image-container"
-          class="inside-human-div inside-pill"
-          onclick="showDiv(`fifthPage`,`sixthPage`)"
-        >
+      <!-- <div class="hidden" id="fifthPage">
+        <div id="image-container" class="inside-human-div inside-pill">
           <div>
             <img
               src="./images/pillArrow.gif"
@@ -347,21 +359,24 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- ------ DIV NUMBER ----- 6 -->
 
-      <div class="hidden" id="sixthPage">
+      <div class="" id="sixthPage">
         <div class="game-play-div">
           <img
             src="./images/gamePlay.svg"
             alt="game-play-img"
             class="game-play-img"
           />
+          <div id="hand-pointer" class="hand-pointer"></div>
         </div>
       </div>
 
       <!-- ------ DIV NUMBER ----- 7 -->
+
+      <div></div>
     </div>
 
     <script>
@@ -371,6 +386,7 @@
         "./images/vitaminPill3.jpg",
       ];
 
+      // Load Lottie animation
       lottie.loadAnimation({
         container: document.getElementById("lottie-container"),
         renderer: "svg",
@@ -378,27 +394,56 @@
         autoplay: true,
         path: "./images/girl-image.json",
       });
+      lottie.loadAnimation({
+        container: document.getElementById("hand-pointer"),
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "./images/handPointer.json",
+      });
+
+      // Function to show and hide divs
       function showDiv(first, second) {
         document.getElementById(first).classList.add("hidden");
-
         document.getElementById(second).classList.remove("hidden");
       }
+
+      // Initial transition on window load
       window.onload = function () {
         setTimeout(function () {
           showDiv("firstPage", "secondPage");
         }, 4000);
       };
 
+      // Image carousel
       const imageContainer = document.getElementById("image-container");
       const imgElement = document.createElement("img");
       let currentIndex = 0;
       imgElement.src = imagePaths[currentIndex];
       imgElement.className = "pill";
       imageContainer.appendChild(imgElement);
+
+      // Dynamically check if 'fifthPage' is active
+      function isFifthPageActive() {
+        const FifthPage = document.getElementById("fifthPage");
+        return FifthPage && !FifthPage.classList.contains("hidden");
+      }
+
+      // Function to update the image
       function updateImage() {
         currentIndex = (currentIndex + 1) % imagePaths.length;
         imgElement.src = imagePaths[currentIndex];
+        if (currentIndex == imagePaths.length - 1) {
+          console.log("Image updated");
+          if (isFifthPageActive()) {
+            setTimeout(() => {
+              showDiv("fifthPage", "sixthPage");
+            }, 1000);
+          }
+        }
       }
+
+      // Call updateImage every 1.5 seconds
       setInterval(updateImage, 1500);
     </script>
   </body>
