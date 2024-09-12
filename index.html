@@ -323,15 +323,22 @@
       <!-- ------ DIV NUMBER ----- 4 -->
 
       <div class="hidden" id="fourthPage">
-        <div class="inside-human-div">
+        <div
+          class="inside-human-div"
+          onclick="showDiv(`fourthPage`,`fifthPage`)"
+        >
           <img src="./images/BodyForPill.gif" alt="pill" class="pill" />
         </div>
       </div>
 
       <!-- ------ DIV NUMBER ----- 5 -->
 
-      <div>
-        <div id="image-container" class="inside-human-div inside-pill">
+      <div class="hidden" id="fifthPage">
+        <div
+          id="image-container"
+          class="inside-human-div inside-pill"
+          onclick="showDiv(`fifthPage`,`sixthPage`)"
+        >
           <div>
             <img
               src="./images/pillArrow.gif"
@@ -344,7 +351,7 @@
 
       <!-- ------ DIV NUMBER ----- 6 -->
 
-      <div>
+      <div class="hidden" id="sixthPage">
         <div class="game-play-div">
           <img
             src="./images/gamePlay.svg"
