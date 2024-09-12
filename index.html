@@ -10,6 +10,17 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <style>
+      /* timer style */
+
+      .timer {
+        font-family: "Arial", sans-serif;
+        font-size: 48px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        margin-top: 20px;
+      }
+
       .hidden {
         display: none;
       }
@@ -375,8 +386,7 @@
       </div>
 
       <!-- ------ DIV NUMBER ----- 7 -->
-
-      <div></div>
+      <div class="timer" id="timer">00:00</div>
     </div>
 
     <script>
@@ -445,6 +455,41 @@
 
       // Call updateImage every 1.5 seconds
       setInterval(updateImage, 1500);
+      let minutes = 0;
+      let seconds = 0;
+
+      // Function to update the timer display
+      function updateTimerDisplay() {
+        // Add leading zero to minutes and seconds if they are less than 10
+        const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+        const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
+        document.getElementById(
+          "timer"
+        ).textContent = `${formattedMinutes}:${formattedSeconds}`;
+      }
+
+      // Function to increment the timer by 5 minutes
+      function runTimer() {
+        // Increment minutes by 5
+        seconds += 5;
+
+        // Reset minutes if it reaches 35 (to go back to 00:00 after 00:30)
+        if (seconds > 30) {
+          seconds = 0;
+        }
+
+        // Always keep seconds at 00 for this specific timer
+        minutes = 0;
+
+        // Update the display
+        updateTimerDisplay();
+      }
+
+      // Initial display update to show 00:00 at page load
+      updateTimerDisplay();
+
+      // Run the timer every 5 minutes (300000 ms = 5 minutes)
+      setInterval(runTimer, 1000); // 5 minutes = 300000 milliseconds
     </script>
   </body>
 </html>
