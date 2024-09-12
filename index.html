@@ -96,10 +96,22 @@
       .inside-human-div {
         height: 100vh;
         background-color: rgba(219, 234, 254, 1);
+        overflow: hidden;
       }
       .pill {
         width: 100%;
         height: 100%;
+      }
+
+      .inside-pill {
+        position: relative;
+      }
+      .pill-arrow {
+        position: absolute;
+        bottom: 14px;
+        right: 30%;
+        height: 13%;
+        transform: rotate(10deg);
       }
 
       .div-size {
@@ -147,11 +159,13 @@
           display: flex;
           justify-content: center;
         }
-
         .pill {
           width: 60%;
           height: 100%;
           border: 2px solid black;
+        }
+        .pill-arrow {
+          right: 40%;
         }
 
         @keyframes moveFromLeft {
@@ -188,6 +202,9 @@
           width: 35%;
           height: 100%;
           border: 2px solid black;
+        }
+        .pill-arrow {
+          right: 44%;
         }
       }
 
@@ -296,10 +313,35 @@
 
       <!-- ------ DIV NUMBER ----- 5 -->
 
-      <div></div>
+      <div>
+        <div id="image-container" class="inside-human-div inside-pill">
+          <div>
+            <img
+              src="./images/pillArrow.gif"
+              alt="pill-arrow"
+              class="pill-arrow"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- ------ DIV NUMBER ----- 6 -->
+
+      <div class="" id="fourthPage">
+        <div class="inside-human-div">
+          <img src="./images/gamePlay.svg" alt="pill" class="" />
+        </div>
+      </div>
+      <!-- ------ DIV NUMBER ----- 7 -->
     </div>
 
     <script>
+      const imagePaths = [
+        "./images/vitaminPill1.jpg",
+        "./images/vitaminPill2.jpg",
+        "./images/vitaminPill3.jpg",
+      ];
+
       lottie.loadAnimation({
         container: document.getElementById("lottie-container"),
         renderer: "svg",
@@ -317,6 +359,18 @@
           showDiv("firstPage", "secondPage");
         }, 4000);
       };
+
+      const imageContainer = document.getElementById("image-container");
+      const imgElement = document.createElement("img");
+      let currentIndex = 0;
+      imgElement.src = imagePaths[currentIndex];
+      imgElement.className = "pill";
+      imageContainer.appendChild(imgElement);
+      function updateImage() {
+        currentIndex = (currentIndex + 1) % imagePaths.length;
+        imgElement.src = imagePaths[currentIndex];
+      }
+      setInterval(updateImage, 1500);
     </script>
   </body>
 </html>
