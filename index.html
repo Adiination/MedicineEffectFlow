@@ -94,16 +94,39 @@
         /* height: 300px; */
         height: 50%;
       }
+      .tap-to-continue {
+        position: absolute;
+        bottom: 10px; /* Adjusts the distance from the bottom */
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        text-align: center;
+      }
       .inside-human-div {
         height: 100vh;
         background-color: rgba(219, 234, 254, 1);
         overflow: hidden;
       }
+
+      .body-pill-div {
+        position: relative;
+        height: 100%; /* Ensure it takes the full height of the container */
+      }
+
       .pill {
         width: 100%;
         height: 100%;
+        object-fit: cover; /* Ensures the image scales properly within its container */
       }
 
+      .body-pill-div p {
+        position: absolute;
+        bottom: 10px; /* Adjusts the distance from the bottom */
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        text-align: center;
+      }
       .inside-pill {
         position: relative;
       }
@@ -362,6 +385,7 @@
             alt="hand-with-glass"
             class="hand-with-glass"
           />
+          <p class="tap-to-continue">Tap to continue</p>
         </div>
       </div>
 
@@ -372,7 +396,10 @@
           class="inside-human-div"
           onclick="showDiv(`fourthPage`,`fifthPage`),setInterval(updateImage, 1500);"
         >
-          <img src="./images/BodyForPill.gif" alt="pill" class="pill" />
+          <div class="body-pill-div">
+            <img src="./images/BodyForPill.gif" alt="pill" class="pill" />
+            <p class="">Tap to continue</p>
+          </div>
         </div>
       </div>
 
