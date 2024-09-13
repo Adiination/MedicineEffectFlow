@@ -11,16 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <style>
       /* timer style */
-
-      .timer {
-        font-family: "Arial", sans-serif;
-        font-size: 48px;
-        font-weight: bold;
-        color: #333;
-        text-align: center;
-        margin-top: 20px;
-      }
-
       .hidden {
         display: none;
       }
@@ -142,7 +132,35 @@
         left: 44%;
         top: 42%;
       }
-
+      .game-play-bg-div {
+      }
+      .timer {
+        font-family: "Arial", sans-serif;
+        font-size: 62px;
+        font-weight: bold;
+        text-align: center;
+        position: absolute;
+        top: 5%;
+        opacity: 0.8;
+        /* transform: translateX(50%); */
+      }
+      .person-center-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 30;
+        background-image: url("./images/gamePlayBg.jpg");
+        background-size: cover; /* Ensures the image covers the div completely */
+        background-repeat: repeat; /* Repeats the image */
+        background-position: top; /* Ensures the image starts from the center */ /* Full viewport width */
+        position: relative;
+      }
+      .game-play-preson {
+        height: 80vh;
+        position: absolute;
+        top: 5%;
+        transform: translateY(7%);
+      }
       .div-size {
         border: 3px solid red;
       }
@@ -300,16 +318,16 @@
     <div class="">
       <!-- ------ DIV NUMBER ----- 1 -->
 
-      <!-- <div class="main-parent-div" id="firstPage">
+      <div class="main-parent-div" id="firstPage">
         <div class="div-no-1">
           <h1 class="start-text">Ready to see Bplex Forte in action?</h1>
           <div id="lottie-container" class="girl-saying-yes"></div>
         </div>
-      </div> -->
+      </div>
 
       <!-- ------ DIV NUMBER ----- 2 -->
 
-      <!-- <div class="hidden" id="secondPage">
+      <div class="hidden" id="secondPage">
         <div class="game-start-div">
           <img
             src="./images/handwithpills.svg"
@@ -328,11 +346,11 @@
             </button>
           </div>
         </div>
-      </div> -->
+      </div>
 
       <!-- ------ DIV NUMBER ----- 3 -->
 
-      <!-- <div class="hidden" id="thirdPage">
+      <div class="hidden" id="thirdPage">
         <div class="game-start-div" onclick="showDiv(`thirdPage`,`fourthPage`)">
           <img
             src="./images/handwithpills.svg"
@@ -345,22 +363,22 @@
             class="hand-with-glass"
           />
         </div>
-      </div> -->
+      </div>
 
       <!-- ------ DIV NUMBER ----- 4 -->
 
-      <!-- <div class="hidden" id="fourthPage">
+      <div class="hidden" id="fourthPage">
         <div
           class="inside-human-div"
           onclick="showDiv(`fourthPage`,`fifthPage`)"
         >
           <img src="./images/BodyForPill.gif" alt="pill" class="pill" />
         </div>
-      </div> -->
+      </div>
 
       <!-- ------ DIV NUMBER ----- 5 -->
 
-      <!-- <div class="hidden" id="fifthPage">
+      <div class="hidden" id="fifthPage">
         <div id="image-container" class="inside-human-div inside-pill">
           <div>
             <img
@@ -370,11 +388,11 @@
             />
           </div>
         </div>
-      </div> -->
+      </div>
 
       <!-- ------ DIV NUMBER ----- 6 -->
 
-      <div class="" id="sixthPage">
+      <div class="hidden" id="sixthPage">
         <div class="game-play-div">
           <img
             src="./images/gamePlay.svg"
@@ -386,7 +404,19 @@
       </div>
 
       <!-- ------ DIV NUMBER ----- 7 -->
-      <div class="timer" id="timer">00:00</div>
+
+      <div class="hidden">
+        <div class="inside-human-div game-play-bg-div">
+          <div class="person-center-div pill">
+            <div class="timer" id="timer">00:00</div>
+            <img
+              src="./images/gamePlayPerson.png"
+              alt="game-play-person"
+              class="game-play-preson"
+            />
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -460,36 +490,22 @@
 
       // Function to update the timer display
       function updateTimerDisplay() {
-        // Add leading zero to minutes and seconds if they are less than 10
         const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
         const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
         document.getElementById(
           "timer"
         ).textContent = `${formattedMinutes}:${formattedSeconds}`;
       }
-
-      // Function to increment the timer by 5 minutes
       function runTimer() {
-        // Increment minutes by 5
         seconds += 5;
-
-        // Reset minutes if it reaches 35 (to go back to 00:00 after 00:30)
         if (seconds > 30) {
           seconds = 0;
         }
-
-        // Always keep seconds at 00 for this specific timer
         minutes = 0;
-
-        // Update the display
         updateTimerDisplay();
       }
-
-      // Initial display update to show 00:00 at page load
       updateTimerDisplay();
-
-      // Run the timer every 5 minutes (300000 ms = 5 minutes)
-      setInterval(runTimer, 1000); // 5 minutes = 300000 milliseconds
+      setInterval(runTimer, 1000);
     </script>
   </body>
 </html>
