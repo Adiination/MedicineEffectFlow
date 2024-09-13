@@ -159,7 +159,7 @@
       }
       .timer {
         font-family: "Arial", sans-serif;
-        font-size: 62px;
+        font-size: 100px;
         font-weight: bold;
         text-align: center;
         position: absolute;
@@ -173,9 +173,9 @@
         align-items: center;
         z-index: 30;
         background-image: url("./images/gamePlayBg.jpg");
-        background-size: cover; /* Ensures the image covers the div completely */
-        background-repeat: repeat; /* Repeats the image */
-        background-position: top; /* Ensures the image starts from the center */ /* Full viewport width */
+        background-size: cover;
+        background-repeat: repeat;
+        background-position: top;
         position: relative;
       }
       .game-play-preson {
@@ -183,6 +183,12 @@
         position: absolute;
         top: 5%;
         transform: translateY(7%);
+      }
+      .timer-json {
+        z-index: 30;
+        height: 150px;
+        position: absolute;
+        top: 35%;
       }
       .div-size {
         border: 3px solid red;
@@ -445,6 +451,8 @@
               alt="game-play-person"
               class="game-play-preson"
             />
+            <!-- <img src="./images/timer.gif" alt="timer-gif" class="timer-gif" /> -->
+            <div id="lottie-timer-json" class="timer-json"></div>
           </div>
         </div>
       </div>
@@ -473,6 +481,13 @@
         loop: true,
         autoplay: true,
         path: "./images/handPointer.json",
+      });
+      lottie.loadAnimation({
+        container: document.getElementById("lottie-timer-json"),
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "./images/timer.json",
       });
 
       // Function to show and hide divs
