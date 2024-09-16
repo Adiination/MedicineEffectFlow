@@ -196,12 +196,23 @@
         position: absolute;
         top: 35%;
       }
-
       .timer-gif {
         z-index: 30;
         position: absolute;
         top: 30%;
         height: 250px;
+      }
+      .complete-img-popup {
+        height: 100vh;
+        width: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 50;
+        background-color: rgba(0, 0, 0, 0.468);
+      }
+      .complete-svg {
+        width: 60vw;
       }
       .div-size {
         border: 3px solid red;
@@ -444,7 +455,7 @@
       <div
         class="hidden"
         id="sixthPage"
-        onclick="showDiv(`sixthPage`,`seventhPage`), setInterval(runTimer, 400);"
+        onclick="showDiv(`sixthPage`,`seventhPage`), setInterval(runTimer, 500);"
       >
         <div class="game-play-div">
           <img
@@ -474,7 +485,32 @@
 
       <!-- ------ DIV NUMBER ----- 8 -->
 
-      <div id="eightPage" class="hidden">
+      <div class="hidden" id="eightPage">
+        <div
+          class="inside-human-div game-play-bg-div"
+          onclick="showDiv(`eightPage`,`ninthPage`)"
+        >
+          <div class="person-center-div pill">
+            <img
+              src="./images/gamePlayPerson.png"
+              alt="game-play-person"
+              class="game-play-preson"
+            />
+            <div class="complete-img-popup">
+              <img
+                src="./images/complete.svg"
+                class="complete-svg"
+                alt="complete-img"
+              />
+              <p class="tap-to-continue">Tap to continue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ------ DIV NUMBER ----- 9 -->
+
+      <div id="ninthPage" class="">
         <div class="inside-human-div game-play-bg-div">
           <div class="person-center-div pill">
             <img
