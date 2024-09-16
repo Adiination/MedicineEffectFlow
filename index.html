@@ -510,7 +510,7 @@
 
       <!-- ------ DIV NUMBER ----- 9 -->
 
-      <div id="ninthPage" class="">
+      <div class="hidden" id="ninthPage">
         <div class="inside-human-div game-play-bg-div">
           <div class="person-center-div pill">
             <img
@@ -608,8 +608,10 @@
       function runTimer() {
         seconds += 5;
         if (seconds > 30) {
+          console.log("hi");
           seconds = 0;
           showDiv("seventhPage", "eightPage");
+          clearInterval(setInterval(runTimer, 500));
         }
         minutes = 0;
         updateTimerDisplay();
