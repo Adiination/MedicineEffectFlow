@@ -455,7 +455,7 @@
       <div
         class="hidden"
         id="sixthPage"
-        onclick="showDiv(`sixthPage`,`seventhPage`), setInterval(runTimer, 500);"
+        onclick="showDiv(`sixthPage`,`seventhPage`),timerId;"
       >
         <div class="game-play-div">
           <img
@@ -488,7 +488,7 @@
       <div class="hidden" id="eightPage">
         <div
           class="inside-human-div game-play-bg-div"
-          onclick="showDiv(`eightPage`,`ninthPage`)"
+          onclick="showDiv(`eightPage`,`ninthPage`),clearInterval(timerId);"
         >
           <div class="person-center-div pill">
             <img
@@ -596,7 +596,7 @@
 
       let minutes = 0;
       let seconds = 0;
-
+      let timerId = setInterval(runTimer, 700);
       // Function to update the timer display
       function updateTimerDisplay() {
         const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
@@ -608,10 +608,8 @@
       function runTimer() {
         seconds += 5;
         if (seconds > 30) {
-          console.log("hi");
           seconds = 0;
           showDiv("seventhPage", "eightPage");
-          clearInterval(setInterval(runTimer, 500));
         }
         minutes = 0;
         updateTimerDisplay();
