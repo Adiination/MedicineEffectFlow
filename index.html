@@ -553,6 +553,12 @@
               class="glowing-circle"
             />
             <img
+              src="./images/glowingCircle.svg"
+              alt="glowing-circle"
+              class="glowing-circle"
+            />
+
+            <img
               src="./images/plainBody.png"
               alt="game-body"
               class="game-play-preson"
@@ -576,7 +582,6 @@
                 />
               </div>
             </div>
-            <p class="tap-to-continue">Click on the pill</p>
           </div>
         </div>
       </div>
@@ -679,6 +684,26 @@
         minutes = 0;
         updateTimerDisplay();
       }
+
+      // Selecting elements by their id
+      const gameTablet = document.getElementById("game-tablet");
+      const gameTabletDetailsPopup = document.getElementById(
+        "game-tablet-details-popup"
+      );
+
+      // Add click event to game tablet
+      gameTablet.addEventListener("click", function () {
+        // Hide the game tablet and show the details popup
+        gameTablet.style.display = "none";
+        gameTabletDetailsPopup.style.display = "block";
+      });
+
+      // Add click event to game tablet details popup to reverse the effect
+      gameTabletDetailsPopup.addEventListener("click", function () {
+        // Show the game tablet and hide the details popup
+        gameTablet.style.display = "block";
+        gameTabletDetailsPopup.style.display = "none";
+      });
     </script>
   </body>
 </html>
