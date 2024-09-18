@@ -634,7 +634,7 @@
 
       <!-- ------ DIV NUMBER ----- 10 -->
 
-      <div id="tenthPage" class="">
+      <div id="tenthPage" class="hidden">
         <div class="inside-human-div game-play-bg-div">
           <div class="person-center-div pill">
             <img
@@ -673,24 +673,24 @@
       ];
 
       // Function to show and hide divs
-      // function showDiv(first, second) {
-      //   document.getElementById(first).classList.add("hidden");
-      //   document.getElementById(second).classList.remove("hidden");
-      // }
+      function showDiv(first, second) {
+        document.getElementById(first).classList.add("hidden");
+        document.getElementById(second).classList.remove("hidden");
+      }
 
-      // // Initial transition on window load
-      // window.onload = function () {
-      //   setTimeout(function () {
-      //     showDiv("firstPage", "secondPage");
-      //   }, 4000);
-      // };
+      // Initial transition on window load
+      window.onload = function () {
+        setTimeout(function () {
+          showDiv("firstPage", "secondPage");
+        }, 4000);
+      };
 
       // Image carousel
       const imageContainer = document.getElementById("image-container");
       const imgElement = document.createElement("img");
       let currentIndex = 0;
       imgElement.src = imagePaths[currentIndex];
-      // imageContainer.appendChild(imgElement);
+      imageContainer.appendChild(imgElement);
 
       // Dynamically check if 'fifthPage' is active
       function isFifthPageActive() {
