@@ -467,7 +467,7 @@
       <div class="hidden" id="fourthPage">
         <div
           class="inside-human-div"
-          onclick="showDiv(`fourthPage`,`fifthPage`),setInterval(updateImage(), 1500);"
+          onclick="showDiv(`fourthPage`,`fifthPage`),setInterval(updateImage, 1500);"
         >
           <div class="body-pill-div">
             <img src="./images/BodyForPill.gif" alt="pill" class="pill" />
@@ -551,7 +551,7 @@
 
       <!-- ------ DIV NUMBER ----- 9 -->
 
-      <div id="ninthPage" class="">
+      <div id="ninthPage" class="hidden">
         <div class="inside-human-div game-play-bg-div">
           <div class="person-center-div pill">
             <img
@@ -577,7 +577,7 @@
                 alt="game-tablet"
                 class="game-tablet"
                 id="GameTablet"
-                onclick="showDiv(`GameTablet`,`tabletMessage`,`glowingPill`)"
+                onclick="hideDiv(`GameTablet`,`tabletMessage`,`glowingPill`)"
               />
             </div>
             <div class="game-tablet-popup hidden" id="tabletMessage">
@@ -659,6 +659,12 @@
       function showDiv(first, second, third) {
         document.getElementById(first).classList.add("hidden");
         document.getElementById(second).classList.remove("hidden");
+      }
+
+      // Function to show and hide two divs
+      function hideDiv(first, second, third) {
+        document.getElementById(first).classList.add("hidden");
+        document.getElementById(second).classList.remove("hidden");
         document.getElementById(third).classList.remove("hidden");
       }
 
@@ -674,7 +680,7 @@
       const imgElement = document.createElement("img");
       let currentIndex = 0;
       imgElement.src = imagePaths[currentIndex];
-      imgElement.className = "";
+
       imageContainer.appendChild(imgElement);
 
       // Dynamically check if 'fifthPage' is active
