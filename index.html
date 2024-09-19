@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
     <title>Document</title>
     <link
       rel="stylesheet"
@@ -45,7 +48,7 @@
       }
       .girl-saying-yes {
         position: absolute;
-        bottom: -40px;
+        bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
         width: 50%;
@@ -73,8 +76,8 @@
       }
       .start-title-btn {
         position: absolute;
-        font-size: 24px;
-        padding: 20px;
+        font-size: 26px;
+        padding: 25px;
         bottom: 10%;
       }
       .start-btn {
@@ -96,20 +99,26 @@
       }
       .tap-to-continue {
         position: absolute;
-        bottom: 10px; /* Adjusts the distance from the bottom */
+        bottom: 10px; /* Distance from the bottom */
         left: 50%;
         transform: translateX(-50%);
         font-size: 24px;
         text-align: center;
+        width: 100vw;
+        opacity: 0; /* Start with an invisible text */
+        animation: fade 1.5s infinite; /* Apply the fade animation */
       }
-      .tap-to-continue {
-        position: absolute;
-        bottom: 10px; /* Adjusts the distance from the bottom */
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 24px;
-        text-align: center;
+
+      @keyframes fade {
+        0%,
+        100% {
+          opacity: 0; /* Invisible at the start and end */
+        }
+        50% {
+          opacity: 1; /* Fully visible in the middle */
+        }
       }
+
       .inside-human-div {
         height: 100vh;
         background-color: rgba(219, 234, 254, 1);
@@ -158,9 +167,10 @@
         height: 100%;
         object-fit: cover;
       }
-      .hand-pointer {
+      .hand-gif {
         position: absolute;
-        left: 44%;
+        left: 42%;
+        height: 120px;
         top: 42%;
       }
       .timer {
@@ -183,6 +193,8 @@
         background-repeat: repeat;
         background-position: top;
         position: relative;
+        height: 100vh;
+        overflow: hidden;
       }
       .game-play-preson {
         height: 80vh;
@@ -245,8 +257,167 @@
         position: absolute;
         top: 25%;
       }
+      .dragging-pill {
+        z-index: 50;
+        height: 80px;
+        width: 80px;
+        position: absolute;
+        top: 40%;
+      }
       .div-size {
         border: 3px solid red;
+      }
+      #target-area-1 {
+        position: absolute;
+        top: 25vh;
+        left: 35vw;
+        width: 14vw;
+        height: 15vw;
+        z-index: 30;
+        /* border: 4px dashed red; */
+      }
+      #target-area-2 {
+        position: absolute;
+        top: 12vh;
+        /* left: 35vw; */
+        width: 13vw;
+        height: 13vw;
+        z-index: 30;
+        /* border: 4px dashed green; */
+      }
+      #target-area-3 {
+        position: absolute;
+        top: 25vh;
+        right: 30vw;
+        width: 14vw;
+        height: 31vw;
+        z-index: 30;
+        /* border: 4px dashed blue; */
+      }
+
+      #message {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      .arm-muscle {
+        height: 80vh;
+      }
+      .mask-body-div {
+        position: absolute;
+        right: 5%;
+        bottom: 35%;
+        height: 0; /* Start with 0 height */
+        width: 0; /* Start with 0 width */
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        overflow: hidden;
+        border: 5px solid white;
+        border-radius: 50%;
+        opacity: 0;
+        animation: expandDiv 1.5s ease-out forwards; /* Apply animation */
+      }
+
+      /* Define the animation for .mask-body-div */
+      @keyframes expandDiv {
+        0% {
+          height: 0;
+          width: 0;
+          opacity: 0;
+        }
+        100% {
+          height: 340px;
+          width: 340px;
+          opacity: 1;
+        }
+      }
+
+      /* Mask message animation */
+      .mask-message {
+        position: absolute;
+        height: 0; /* Start with 0 height */
+        top: 5%;
+        right: 5%;
+        top: 10%;
+        opacity: 0; /* Start invisible */
+        animation: showMessage 1.5s ease-out 1.5s forwards; /* Delay of 1.5s, same as mask-body-div */
+      }
+      .be-plex-div {
+        background-image: url("./images/beplexImg.svg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        width: 100%;
+      }
+
+      /* Define the animation for .mask-message */
+      @keyframes showMessage {
+        0% {
+          height: 0;
+          opacity: 0;
+        }
+        100% {
+          height: 200px;
+          opacity: 1;
+        }
+      }
+
+      .mask-body {
+        width: 150%;
+      }
+      .pointing-arrow {
+        position: absolute;
+        height: 230px;
+        top: 22%;
+        transform: rotate(-55deg);
+      }
+      .body-pointing-arrow {
+        position: absolute;
+        height: 250px;
+        right: 26%;
+        top: 15%;
+        transform: rotate(-26deg);
+      }
+      .nervous-pointing-arrow {
+        position: absolute;
+        height: 250px;
+        right: 26%;
+        top: 16%;
+        transform: rotate(-40deg);
+      }
+
+      .complete-img-popup-2 {
+        height: 100vh;
+        width: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 50;
+        background-color: rgba(0, 0, 0, 0.468);
+        position: absolute;
+        opacity: 0; /* Initially invisible */
+        transform: scale(0); /* Initially scaled down */
+        animation: complete-pop 2.5s ease-in forwards;
+        animation-delay: 5s; /* Add a 5-second delay */
+      }
+
+      @keyframes complete-pop {
+        0% {
+          opacity: 0;
+          transform: scale(0); /* Start fully scaled down */
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1); /* End at full size */
+        }
       }
 
       @media (min-width: 320px) {
@@ -256,7 +427,7 @@
       @media (min-width: 768px) {
         .girl-saying-yes {
           max-width: 60%;
-          bottom: -50px;
+          bottom: -10px;
         }
         .hand-with-pill2 {
           height: 500px;
@@ -322,7 +493,7 @@
       @media (min-width: 1024px) {
         .girl-saying-yes {
           max-width: 35%;
-          bottom: -70px;
+          bottom: -50px;
         }
         .hand-with-pill2 {
           height: 550px;
@@ -365,11 +536,11 @@
       }
       .hand-with-pill {
         left: -200px;
-        animation: moveFromLeft 2s forwards;
+        animation: moveFromLeft 2s ease-in-out forwards;
       }
       .hand-with-glass {
-        right: -200px;
-        animation: moveFromRight 2s forwards;
+        right: -350px;
+        animation: moveFromRight 2s ease-in-out forwards;
       }
 
       @keyframes moveFromLeft {
@@ -414,7 +585,7 @@
         <div class="div-no-1">
           <h1 class="start-text">Ready to see Bplex Forte in action?</h1>
           <img
-            src="./images/girl-image.gif"
+            src="./images/girl.gif"
             alt="girl-image"
             class="girl-saying-yes"
           />
@@ -471,7 +642,7 @@
         >
           <div class="body-pill-div">
             <img src="./images/BodyForPill.gif" alt="pill" class="pill" />
-            <p class="">Tap to continue</p>
+            <p class="tap-to-continue">Tap to continue</p>
           </div>
         </div>
       </div>
@@ -503,7 +674,7 @@
             alt="game-play-img"
             class="game-play-img"
           />
-          <div id="hand-pointer" class="hand-pointer"></div>
+          <img src="./images/hand.gif" alt="hand-gif" class="hand-gif" />
         </div>
       </div>
 
@@ -613,15 +784,133 @@
             <img
               src="./images/organBodyWihtoutPill.png"
               alt="game-body"
+              id="game-area"
               class="game-play-preson"
+              onclick="resetPillPosition()"
             />
             <img
-              src="./images/glowingPill.svg"
+              src="./images/pill.png"
               alt="glowing-pill"
-              class="glowing-pill"
+              id="moving-div"
+              class="dragging-pill"
+            />
+            <p class="tap-to-continue">
+              Drag the pill to highlighted body parts
+            </p>
+          </div>
+          <div id="target-area-1"></div>
+          <div id="target-area-2"></div>
+          <div id="target-area-3"></div>
+        </div>
+      </div>
+
+      <!-- ------ DIV NUMBER ----- 11 -->
+
+      <div class="hidden" id="eleventhPage">
+        <div class="person-center-div">
+          <img
+            src="./images/arm-muscle.svg"
+            alt="arm-muscle"
+            class="arm-muscle"
+          />
+          <img
+            src="./images/pointingArrow.gif"
+            alt="pointing-arrow"
+            class="pointing-arrow"
+          />
+          <img
+            src="./images/maskMessage.png"
+            alt="mask-message"
+            class="mask-message"
+          />
+          <div class="complete-img-popup-2">
+            <img
+              src="./images/unlockPop.svg"
+              class="complete-svg"
+              alt="complete-img"
+              onclick="exploreMore(`eleventhPage`,`tenthPage`)"
+            />
+          </div>
+          <div class="mask-body-div">
+            <img
+              src="./images/maskBody.png"
+              alt="mask-body"
+              class="mask-body"
             />
           </div>
         </div>
+      </div>
+
+      <!-- ------ DIV NUMBER ----- 12 -->
+
+      <div class="hidden" id="twelthPage">
+        <div class="person-center-div">
+          <img
+            src="./images/bodyWithBrain.svg"
+            alt="arm-muscle"
+            class="arm-muscle"
+          />
+          <img
+            src="./images/pointingArrow.gif"
+            alt="pointing-arrow"
+            class="body-pointing-arrow"
+          />
+          <img
+            src="./images/brainMessage.png"
+            alt="mask-message"
+            class="mask-message"
+          />
+          <div class="complete-img-popup-2">
+            <img
+              src="./images/brainUnlockPop.svg"
+              class="complete-svg"
+              alt="complete-img"
+              onclick="exploreMore(`twelthPage`,`tenthPage`)"
+            />
+          </div>
+          <div class="mask-body-div">
+            <img src="./images/brain.png" alt="mask-body" class="mask-body" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ------ DIV NUMBER ----- 13 -->
+
+      <div class="hidden" id="thirteenPage">
+        <div class="person-center-div">
+          <img
+            src="./images/nervousBody.svg"
+            alt="arm-muscle"
+            class="arm-muscle"
+          />
+          <img
+            src="./images/pointingArrow.gif"
+            alt="pointing-arrow"
+            class="nervous-pointing-arrow"
+          />
+          <img
+            src="./images/nervousMessage.svg"
+            alt="mask-message"
+            class="mask-message"
+          />
+          <div class="complete-img-popup-2">
+            <img
+              src="./images/nervousUnlock.svg"
+              class="complete-svg"
+              alt="complete-img"
+              onclick="exploreMore(`thirteenPage`,`tenthPage`)"
+            />
+          </div>
+          <div class="mask-body-div">
+            <img src="./images/nervous.svg" alt="mask-body" class="mask-body" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ------ DIV NUMBER ----- 14 -->
+
+      <div id="fourteenPage" class="hidden">
+        <div class="be-plex-div"></div>
       </div>
     </div>
 
@@ -632,31 +921,8 @@
         "./images/vitaminPill3.jpg",
       ];
 
-      // Load Lottie animation
-      lottie.loadAnimation({
-        container: document.getElementById("lottie-container"),
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        path: "./images/girl-image.json",
-      });
-      lottie.loadAnimation({
-        container: document.getElementById("hand-pointer"),
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        path: "./images/handPointer.json",
-      });
-      lottie.loadAnimation({
-        container: document.getElementById("lottie-timer-json"),
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        path: "./images/timer.json",
-      });
-
       // Function to show and hide divs
-      function showDiv(first, second, third) {
+      function showDiv(first, second) {
         document.getElementById(first).classList.add("hidden");
         document.getElementById(second).classList.remove("hidden");
       }
@@ -668,7 +934,7 @@
         document.getElementById(third).classList.remove("hidden");
       }
 
-      // Initial transition on window load
+      // // Initial transition on window load
       window.onload = function () {
         setTimeout(function () {
           showDiv("firstPage", "secondPage");
@@ -702,7 +968,7 @@
           }
         }
       }
-
+      let PageCount = 0;
       let minutes = 0;
       let seconds = 0;
       let intervalId;
@@ -726,6 +992,159 @@
         }
         minutes = 0;
         updateTimerDisplay();
+      }
+
+      const movingDiv = document.getElementById("moving-div");
+      const messageDiv = document.getElementById("message");
+
+      // Targets
+      const targetArea1 = document.getElementById("target-area-1");
+      const targetArea2 = document.getElementById("target-area-2");
+      const targetArea3 = document.getElementById("target-area-3");
+
+      let offsetX, offsetY;
+      let isDragging = false; // Track whether the pill is currently being dragged
+
+      // Helper function to start dragging
+      function startDrag(x, y) {
+        console.log("Drag started at:", { x, y });
+        offsetX = x - movingDiv.offsetLeft;
+        offsetY = y - movingDiv.offsetTop;
+        isDragging = true;
+
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+        document.addEventListener("touchmove", onTouchMove);
+        document.addEventListener("touchend", onTouchEnd);
+      }
+
+      function onMouseMove(e) {
+        if (!isDragging) return;
+        const x = e.clientX;
+        const y = e.clientY;
+        console.log("Mouse moved to:", { x, y });
+        moveDiv(x, y);
+      }
+
+      function onTouchMove(e) {
+        if (!isDragging) return;
+        const touch = e.touches[0];
+        const x = touch.clientX;
+        const y = touch.clientY;
+        console.log("Touch moved to:", { x, y });
+        moveDiv(x, y);
+      }
+
+      function moveDiv(x, y) {
+        const newX = x - offsetX;
+        const newY = y - offsetY;
+
+        // Log new coordinates of the pill
+        console.log("Moving pill to:", { newX, newY });
+
+        // Update the position of the pill
+        movingDiv.style.left = `${newX}px`;
+        movingDiv.style.top = `${newY}px`;
+
+        // Check the current position of the moving div with respect to the target areas
+        checkPosition(newX, newY);
+      }
+
+      function onMouseUp() {
+        console.log("Mouse released");
+        isDragging = false;
+        cleanupListeners();
+      }
+
+      function onTouchEnd() {
+        console.log("Touch released");
+        isDragging = false;
+        cleanupListeners();
+      }
+
+      // Function to remove event listeners after drag ends
+      function cleanupListeners() {
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+        document.removeEventListener("touchmove", onTouchMove);
+        document.removeEventListener("touchend", onTouchEnd);
+      }
+
+      // Check if the moving div is within any of the target areas
+      function checkPosition(newX, newY) {
+        const movingRect = movingDiv.getBoundingClientRect();
+
+        const targetRect1 = targetArea1.getBoundingClientRect();
+        const targetRect2 = targetArea2.getBoundingClientRect();
+        const targetRect3 = targetArea3.getBoundingClientRect();
+
+        console.log("Moving Div Area:", movingRect);
+
+        // Check if the pill is inside any target and allow moving out
+        if (isInsideTarget(movingRect, targetRect1)) {
+          console.log("Pill is inside target area 1");
+
+          setTimeout(() => {
+            showDiv("tenthPage", "eleventhPage");
+          }, 100);
+
+          messageDiv.textContent = "You have reached target area 1!";
+        } else if (isInsideTarget(movingRect, targetRect2)) {
+          console.log("Pill is inside target area 2");
+
+          setTimeout(() => {
+            showDiv("tenthPage", "twelthPage");
+          }, 100);
+
+          messageDiv.textContent = "You have reached target area 2!";
+        } else if (isInsideTarget(movingRect, targetRect3)) {
+          console.log("Pill is inside target area 3");
+
+          setTimeout(() => {
+            showDiv("tenthPage", "thirteenPage");
+          }, 100);
+
+          messageDiv.textContent = "You have reached target area 3!";
+        } else {
+          //   console.log("Pill is outside all target areas");
+          // messageDiv.textContent = "Drag the glowing pill";
+        }
+      }
+
+      // Helper function to check if the moving div is inside a target area
+      function isInsideTarget(movingRect, targetRect, margin = 5) {
+        return (
+          movingRect.left >= targetRect.left + margin &&
+          movingRect.right <= targetRect.right - margin &&
+          movingRect.top >= targetRect.top + margin &&
+          movingRect.bottom <= targetRect.bottom - margin
+        );
+      }
+
+      // Mouse events
+      movingDiv.addEventListener("mousedown", (e) => {
+        startDrag(e.clientX, e.clientY);
+      });
+
+      // Touch events for mobile
+      movingDiv.addEventListener("touchstart", (e) => {
+        const touch = e.touches[0];
+        startDrag(touch.clientX, touch.clientY);
+      });
+      let initialPosition = { left: 45, top: 40 };
+      function resetPillPosition() {
+        console.log("Resetting pill to initial position:", initialPosition);
+        movingDiv.style.left = `${initialPosition.left}%`;
+        movingDiv.style.top = `${initialPosition.top}%`;
+      }
+      function exploreMore(first, second) {
+        PageCount += 1;
+        resetPillPosition();
+        if (PageCount >= 3) {
+          showDiv(first, `fourteenPage`);
+        } else {
+          showDiv(first, second);
+        }
       }
     </script>
   </body>
